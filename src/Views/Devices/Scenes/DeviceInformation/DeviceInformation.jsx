@@ -142,8 +142,8 @@ function DeviceInformation({
                     type: 'linear',
                     position: 'left',
                     ticks: {
-                      max: 50,
-                      min: 0
+                      max: 30,
+                      min: 10
                     }
                   }, {
                     id: 'humidity',
@@ -159,16 +159,6 @@ function DeviceInformation({
 						/>
           </Paper>
         </Grid>
-        {/* <Grid item xs={12} md={4} lg={3}>
-          <Paper className={fixedHeightPaper}>
-            <Deposits />
-          </Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <Orders />
-          </Paper>
-        </Grid> */}
       </Grid>
     </Box>
   );
