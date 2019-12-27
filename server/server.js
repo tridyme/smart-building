@@ -34,7 +34,7 @@ server.use((req, res, next) => {
 });
 server.use('/', router);
 
-const hostname = '192.168.1.20';
+const hostname = 'localhost';
 const port = process.env.PORT || 5000;
 
 server.listen(port, hostname, () => {
