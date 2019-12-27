@@ -13,7 +13,7 @@ import Title from '../../../Components/Title';
 
 const useStyles = makeStyles(theme => ({
   seeMore: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(4)
   },
 }));
 
@@ -42,18 +42,16 @@ export default function DeviceList({
               <TableCell>{device.date}</TableCell>
               <TableCell>{device._id}</TableCell>
               <TableCell>{device.type}</TableCell>
-              <TableCell align="right">{device.room}</TableCell>
+              <TableCell>{device.room}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <Button
-        size="small"
-        to={`/devices`}
-        component={ Link }
-      >
-        Learn More
-      </Button>
+      <div className={classes.seeMore}>
+        <Link color="primary" to={`/devices`}>
+          See more orders
+        </Link>
+      </div>
     </React.Fragment>
   );
 }

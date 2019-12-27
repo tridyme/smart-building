@@ -36,10 +36,14 @@ module.exports = {
             humidity: {
               $set: h
             },
+            date: {
+              $set: Date.now()
+            },
             data: {
               $push: [{
                 temperature: t,
-                humidity: h
+                humidity: h,
+                date: Date.now()
               }]
             }
           });

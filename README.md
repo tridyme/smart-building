@@ -1,4 +1,4 @@
-## Créer mon application
+## Controller 
 
 > Afin de permettre aux ingénieurs de pouvoir développer leurs propres applications en ligne, TriAzur met à disposition le kit de développement <a href="https://gitlab.com/triazur/triazur-webapp-kit-serverless.git" target="_blank">triazur-webapp-kit-serverless</a>.
 

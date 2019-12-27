@@ -29,23 +29,14 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import DeviceList from './DeviceList';
 import initialData from './initialData';
+
+import MapElem from '../../Components/MapElem';
+
 import axios from 'axios';
 const {
 	REACT_APP_API_URL
 } = process.env;
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const drawerWidth = 240;
 
@@ -120,35 +111,37 @@ function Dashboard(props) {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   
   return (
-    <Box>
+    <Grid container spacing={4}>
       <Grid item xs={12}>
         <Typography variant="h4" component="h1" gutterBottom>
           Dashboard
         </Typography>
       </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={8} lg={9}>
-          <Paper className={fixedHeightPaper}>
-            <Chart />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={4} lg={3}>
-          <Paper className={fixedHeightPaper}>
-            <Deposits />
-          </Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <DeviceList
-              deviceList={deviceList}
-            />
-          </Paper>
-        </Grid>
+      {/* <Grid  spacing={3}> */}
+      {/* <Grid item xs={12}>
+        <Paper className={fixedHeightPaper}>
+          <MapElem />
+        </Paper>
+      </Grid> */}
+      <Grid item xs={12}>
+        <Paper className={fixedHeightPaper}>
+          <Chart />
+        </Paper>
       </Grid>
-      <Box pt={4}>
-        <Copyright />
-      </Box>
-    </Box>
+      <Grid item xs={12}>
+        <Paper className={fixedHeightPaper}>
+          <Deposits />
+        </Paper>
+      </Grid>
+      <Grid item xs={12}>
+        <Paper className={fixedHeightPaper}>
+          <DeviceList
+            deviceList={deviceList}
+          />
+        </Paper>
+      </Grid>
+      {/* </Grid> */}
+    </Grid>
   );
 }
 

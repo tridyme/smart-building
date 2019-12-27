@@ -40,7 +40,6 @@ module.exports =  {
   delete: async (req, res) => {
     try {
       const { id } = req.params;
-      console.log(id);
       const device = await RoomsService.deleteRoom(id);
       res.status(200).send(device);
     } catch (err) {
