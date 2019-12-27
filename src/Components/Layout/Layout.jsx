@@ -5,6 +5,7 @@ import {
 	Col
 } from 'reactstrap';
 import NavBar from '../NavBar';
+import WebAppBar from '../WebAppBar';
 import './Layout.css';
 
 const Layout = ({
@@ -12,7 +13,7 @@ const Layout = ({
 }) => (
 	<Col md={12}>
 		<Row>
-			<NavBar />
+			<WebAppBar />
 		</Row>
 		<Row>
 			<Container fluid={false} className="views-container">

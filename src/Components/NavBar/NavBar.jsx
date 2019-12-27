@@ -46,15 +46,15 @@ const NavBar = ({
       <Collapse isOpen={isOpen} navbar>
         <Nav navbar className="ml-auto">
           <NavItem>
-            <Link className="nav-link" to="/myapp">
+            <Link className="nav-link" to="/dashboard">
               <Business className="material-icons d-inline-block" />
-              MyApp
+                Dashboard
             </Link>
           </NavItem>
           <NavItem>
-            <Link className="nav-link" to="/page1">
+            <Link className="nav-link" to="/devices">
               <MenuBook className="material-icons d-inline-block" />
-              Page 1
+                Devices
             </Link>
           </NavItem>
         </Nav>
