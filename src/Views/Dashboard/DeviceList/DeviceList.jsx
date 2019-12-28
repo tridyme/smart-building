@@ -7,11 +7,16 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  TableContainer,
+  Paper,
   Button
 } from '@material-ui/core';
 import Title from '../../../Components/Title';
 
 const useStyles = makeStyles(theme => ({
+  table: {
+    minWidth: 650,
+  },
   seeMore: {
     marginTop: theme.spacing(4)
   },
@@ -23,9 +28,9 @@ export default function DeviceList({
 }) {
   const classes = useStyles();
   return (
-    <React.Fragment>
+    <TableContainer>
       <Title>Recent Device</Title>
-      <Table size="small">
+      <Table className={classes.table}>
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -52,6 +57,6 @@ export default function DeviceList({
           See more
         </Link>
       </div>
-    </React.Fragment>
+    </TableContainer>
   );
 }

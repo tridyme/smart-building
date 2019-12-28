@@ -122,14 +122,13 @@ function Dashboard(props) {
   
   return (
     <Grid container spacing={4}>
-      <Grid item sm={12}>
+      <Grid item xs={12}>
         <Typography variant="h4" component="h1" gutterBottom>
           Dashboard
         </Typography>
         <Divider variant="middle" />
       </Grid>
-      {/* <Grid  spacing={3}> */}
-      <Grid item xs={12}>
+      <Grid item sm={12}>
         <Paper className={classes.map}>
           <MapElem
             title={'Location'}
@@ -137,7 +136,7 @@ function Dashboard(props) {
           />
         </Paper>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item md={6}>
         <Paper className={fixedHeightPaper}>
           <Chart
             buildingName={buildingName}
@@ -145,7 +144,7 @@ function Dashboard(props) {
           />
         </Paper>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item md={6}>
         <Paper className={fixedHeightPaper}>
           <RoomList
             roomList={roomList}
