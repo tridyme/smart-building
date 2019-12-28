@@ -1,6 +1,20 @@
 import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
+import { 
+	Button,
+  Select,
+  TextField,
+  Dialog,
+  DialogActions,
+  DialogContentText,
+  DialogContent,
+	DialogTitle,
+	FormControl,
+	FormHelperText,
+	MenuItem,
+	InputLabel 
+} from '@material-ui/core';
 import Title from '../../../Components/Title';
 
 // Generate Sales Data
@@ -20,13 +34,27 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export default function Chart() {
+export default function Chart({
+  buildingName,
+  handleChangeBuildingName
+}) {
   const theme = useTheme();
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
-      <ResponsiveContainer>
+      <Title>Building Informations</Title>
+      <TextField
+          autoFocus
+          margin="dense"
+          label="Building adress"
+          helperText="Please enter the adress of the building"
+          fullWidth
+          required
+          color="secondary"
+          value={buildingName}
+          onChange={handleChangeBuildingName}
+        />
+      {/* <ResponsiveContainer>
         <LineChart
           data={data}
           margin={{
@@ -48,7 +76,7 @@ export default function Chart() {
           </YAxis>
           <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />
         </LineChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> */}
     </React.Fragment>
   );
 }

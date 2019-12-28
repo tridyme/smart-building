@@ -28,6 +28,7 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import DeviceList from './DeviceList';
+import RoomList from './RoomList';
 import initialData from './initialData';
 
 import MapElem from '../../Components/MapElem';
@@ -37,27 +38,31 @@ const {
 	REACT_APP_API_URL
 } = process.env;
 
-
-const drawerWidth = 240;
-
 const useStyles = makeStyles(theme => ({
-  title: {
-    flexGrow: 1,
-  },
-  content: {
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
+  // title: {
+  //   flexGrow: 1,
+  // },
+  // content: {
+  //   flexGrow: 1,
+  //   height: '100vh',
+  //   overflow: 'auto',
+  // },
+  // container: {
+  //   paddingTop: theme.spacing(4),
+  //   paddingBottom: theme.spacing(4),
+  // },
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
+  },
+  map: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+    height: 400,
   },
   fixedHeight: {
     height: 240,
@@ -69,6 +74,8 @@ function Dashboard(props) {
 
   const classes = useStyles();
   const [appData, setAppData] = useState(initialData);
+  const [buildingName, setBuildingName] = useState('29 rue de la Paix Colombes');
+  const [buildingCoordinates, setBuildingCoordinates] = useState([2.241347, 48.912588]);
   const [roomList, setRoomList] = useState([]);
   const [deviceList, setDeviceList] = useState([]);
 
@@ -108,29 +115,41 @@ function Dashboard(props) {
     }
 	};
 
+  const handleChangeBuildingName = event => {
+    setBuildingName(event.target.value);
+  };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   
   return (
     <Grid container spacing={4}>
-      <Grid item xs={12}>
+      <Grid item sm={12}>
         <Typography variant="h4" component="h1" gutterBottom>
           Dashboard
         </Typography>
+        <Divider variant="middle" />
       </Grid>
       {/* <Grid  spacing={3}> */}
-      {/* <Grid item xs={12}>
-        <Paper className={fixedHeightPaper}>
-          <MapElem />
-        </Paper>
-      </Grid> */}
       <Grid item xs={12}>
-        <Paper className={fixedHeightPaper}>
-          <Chart />
+        <Paper className={classes.map}>
+          <MapElem
+            title={'Location'}
+            buildingCoordinates={buildingCoordinates}
+          />
         </Paper>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={6}>
         <Paper className={fixedHeightPaper}>
-          <Deposits />
+          <Chart
+            buildingName={buildingName}
+            handleChangeBuildingName={handleChangeBuildingName}
+          />
+        </Paper>
+      </Grid>
+      <Grid item xs={6}>
+        <Paper className={fixedHeightPaper}>
+          <RoomList
+            roomList={roomList}
+          />
         </Paper>
       </Grid>
       <Grid item xs={12}>

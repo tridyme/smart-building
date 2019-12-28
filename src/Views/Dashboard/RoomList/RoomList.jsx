@@ -18,37 +18,31 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function DeviceList({
-  deviceList
+export default function RoomList({
+  roomList
 }) {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Recent Device</Title>
+      <Title>Rooms</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>Date</TableCell>
             <TableCell>ID</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Room</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {deviceList.map(device => (
-            <TableRow key={device._id}>
-              <TableCell><Link to={`/devices/${device._id}`}>{device.name}</Link></TableCell>
-              <TableCell>{device.date}</TableCell>
-              <TableCell>{device._id}</TableCell>
-              <TableCell>{device.type}</TableCell>
-              <TableCell>{device.room}</TableCell>
+          {roomList.map(room => (
+            <TableRow key={room._id}>
+              <TableCell><Link to={`/rooms/${room._id}`}>{room.name}</Link></TableCell>
+              <TableCell>{room._id}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
-        <Link color="primary" to={`/devices`}>
+        <Link color="primary" to={`/rooms`}>
           See more
         </Link>
       </div>

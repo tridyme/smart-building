@@ -10,6 +10,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
 import history from './history';
 import Drawer from './Components/Drawer';
+import PersistentDrawer from './Components/PersistentDrawer';
 import Dashboard from './Views/Dashboard/';
 import Devices from './Views/Devices/';
 import Rooms from './Views/Rooms/';
@@ -48,8 +49,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router history={history}>
-        <Drawer
-          title="MyApp"
+        <PersistentDrawer
+          title="Smart Building"
           menu={Menu}
         >
           <Switch>
@@ -60,7 +61,7 @@ const App = () => {
             <Route exact path="/rooms" component={Rooms} />
             <Route exact path="/rooms/:id" component={RoomDescription} />
           </Switch>
-        </Drawer>
+        </PersistentDrawer>
       </Router>
     </ThemeProvider>
   );
