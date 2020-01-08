@@ -79,8 +79,9 @@ const Menu = {
     { text: "Dashboard", link: "/dashboard", icon: "dashboard" },
     { text: "Devices", link: "/devices", icon: "important_devices" },
     { text: "Rooms", link: "/rooms", icon: "home_work" },
+    { text: "Rooms", link: "/archicadPlugin", icon: "home_work" },
   ],
   MenuSideBarInf: [
-    { text: "", link: "", icon: "" }
+    { text: "Rooms", link: "/archicadPlugin", icon: "home_work" }
   ]
 };
