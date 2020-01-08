@@ -14,6 +14,7 @@ import PersistentDrawer from './Components/PersistentDrawer';
 import Dashboard from './Views/Dashboard/';
 import Devices from './Views/Devices/';
 import Rooms from './Views/Rooms/';
+import ArchicadPlugin from './Views/ArchicadPlugin/ArchicadPluginViewer';
 import RoomDescription from './Views/Rooms/Scenes/RoomDescription';
 import DeviceInformation from './Views/Devices/Scenes/DeviceInformation';
 
@@ -60,6 +61,7 @@ const App = () => {
             <Route exact path="/devices/:id" component={DeviceInformation} />
             <Route exact path="/rooms" component={Rooms} />
             <Route exact path="/rooms/:id" component={RoomDescription} />
+            <Route exact path="/archicadPlugin" component={ArchicadPlugin} />
           </Switch>
         </PersistentDrawer>
       </Router>
