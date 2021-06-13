@@ -125,6 +125,7 @@ function SensorInformation({
                   label: ['temperature'],
                   showLine: true,
                   fill: false,
+                  pointRadius: 0
                 }, {
                   data: humidityData,
                   yAxisID: 'humidity',
@@ -133,6 +134,7 @@ function SensorInformation({
                   label: ['humidity'],
                   showLine: true,
                   fill: false,
+                  pointRadius: 0
                 }],
               }}
               options={{

@@ -67,10 +67,10 @@ export default function CardSpace({
 			let lCN = 0;
 			let tHN = 0;
 			res.data.map(sensor => {
-				if (sensor.type === 'lightController') {
+				if (sensor.type === 'LightController') {
 					lCN += 1;
 				}
-				if (sensor.type === 'temperatureAndHumidity') {
+				if (sensor.type === 'TemperatureAndHumidity') {
 					tHN += 1;
 				}
 			});
