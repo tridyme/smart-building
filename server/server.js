@@ -8,13 +8,14 @@ const helmet = require('helmet');
 const server = express();
 const router = express.Router();
 
-const connectDatabase = async() => {
-	const options = {
-		useNewUrlParser: true,
+const connectDatabase = async () => {
+  const options = {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
-	}
-	const urlDatabase = "mongodb://triazur:1850AbAb$@ds161346.mlab.com:61346/iot_test"
-	await mongoose.connect(urlDatabase, options);
+  }
+  const urlDatabase = "mongodb://127.0.0.1:27017/iot_db"
+  //const urlDatabase = "mongodb://triazur:1850AbAb$@ds161346.mlab.com:61346/iot_test"
+  await mongoose.connect(urlDatabase, options);
 };
 
 connectDatabase().catch(error => console.error('Try to verify your mongodb url !', error));
@@ -35,8 +36,8 @@ server.use((req, res, next) => {
 server.use('/', router);
 
 // const hostname = '192.168.1.20';
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5500;
 
 server.listen(port, () => {
-    console.log(`Server started at port:${port}`)
-  })
+  console.log(`Server started at port:${port}`)
+})

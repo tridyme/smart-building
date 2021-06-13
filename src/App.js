@@ -12,12 +12,10 @@ import history from './history';
 import Drawer from './Components/Drawer';
 import PersistentDrawer from './Components/PersistentDrawer';
 import Dashboard from './Views/Dashboard/';
-import Devices from './Views/Devices/';
-import Rooms from './Views/Rooms/';
-import ArchicadPlugin from './Views/ArchicadPlugin/ArchicadPluginViewer';
-import RoomDescription from './Views/Rooms/Scenes/RoomDescription';
-import DeviceInformation from './Views/Devices/Scenes/DeviceInformation';
-
+import Spaces from './Views/Spaces/';
+import SpaceDescription from './Views/Spaces/Scenes/SpaceDescription';
+import Sensors from './Views/Sensors/';
+import SensorInformation from './Views/Sensors/Scenes/SensorInformation';
 import blue from '@material-ui/core/colors/blue';
 
 import indigo from '@material-ui/core/colors/indigo';
@@ -25,6 +23,10 @@ import pink from '@material-ui/core/colors/pink';
 import red from '@material-ui/core/colors/red';
 
 const App = () => {
+  // window.location.reload(true);
+  // React.useEffect(() => {
+  //   window.location.reload(true);
+  // }, []);
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const theme = React.useMemo(
     () =>
@@ -57,11 +59,10 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/devices" component={Devices} />
-            <Route exact path="/devices/:id" component={DeviceInformation} />
-            <Route exact path="/rooms" component={Rooms} />
-            <Route exact path="/rooms/:id" component={RoomDescription} />
-            <Route exact path="/archicadPlugin" component={ArchicadPlugin} />
+            <Route exact path="/sensors" component={Sensors} />
+            <Route exact path="/sensors/:id" component={SensorInformation} />
+            <Route exact path="/spaces" component={Spaces} />
+            <Route exact path="/spaces/:id" component={SpaceDescription} />
           </Switch>
         </PersistentDrawer>
       </Router>
@@ -77,11 +78,9 @@ const Menu = {
   ],
   MenuSideBarSup: [
     { text: "Dashboard", link: "/dashboard", icon: "dashboard" },
-    { text: "Devices", link: "/devices", icon: "important_devices" },
-    { text: "Rooms", link: "/rooms", icon: "home_work" },
-    { text: "Rooms", link: "/archicadPlugin", icon: "home_work" },
+    { text: "Spaces", link: "/spaces", icon: "home_work" },
   ],
   MenuSideBarInf: [
-    { text: "Rooms", link: "/archicadPlugin", icon: "home_work" }
+    { text: "Sensors", link: "/sensors", icon: "important_devices" },
   ]
 };

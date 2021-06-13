@@ -1,9 +1,7 @@
-const devices = require('./devices');
-const rooms = require('./rooms');
-const archicadPlugin = require('./archicadPlugin');
+const sensors = require('./sensors');
+const spaces = require('./spaces');
 
 module.exports = (router) => (
-	devices(router),
-	rooms(router),
-	archicadPlugin(router)
+	sensors(router),
+	spaces(router)
 );

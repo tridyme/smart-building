@@ -132,15 +132,17 @@ export default function PersistentDrawerLeft({
 						</Link>
           ))}
         </List>
-        {/* <Divider />
+        <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+          {menu.MenuSideBarInf.map((item, index) => (
+            <a href={item.link}>
+							<ListItem button key={index}>
+								<ListItemIcon><Icon>{item.icon}</Icon></ListItemIcon>
+								<ListItemText primary={item.text} />
+							</ListItem>
+						</a>
           ))}
-        </List> */}
+        </List>
       </Drawer>
       <main
         className={clsx(classes.content, {

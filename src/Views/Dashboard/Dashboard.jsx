@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import update from 'immutability-helper';
 import { fromJS } from 'immutable';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
+import {
   Fab,
   Grid,
   Typography,
@@ -27,15 +27,15 @@ import Outputs from './Outputs';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
-import DeviceList from './DeviceList';
-import RoomList from './RoomList';
+import SensorList from './SensorList';
+import SpaceList from './SpaceList';
 import initialData from './initialData';
 
 import MapElem from '../../Components/MapElem';
 
 import axios from 'axios';
 const {
-	REACT_APP_API_URL
+  REACT_APP_API_URL
 } = process.env;
 
 const useStyles = makeStyles(theme => ({
@@ -74,10 +74,10 @@ function Dashboard(props) {
 
   const classes = useStyles();
   const [appData, setAppData] = useState(initialData);
-  const [buildingName, setBuildingName] = useState('29 rue de la Paix Colombes');
-  const [buildingCoordinates, setBuildingCoordinates] = useState([2.241347, 48.912588]);
-  const [roomList, setRoomList] = useState([]);
-  const [deviceList, setDeviceList] = useState([]);
+  const [buildingName, setBuildingName] = useState('79 Avenue Aristide Briand, 94110 Arcueil');
+  const [buildingCoordinates, setBuildingCoordinates] = useState([2.326807, 48.804707]);
+  const [spaceList, setSpaceList] = useState([]);
+  const [sensorList, setSensorList] = useState([]);
 
   const updateValue = (field, name, value) => {
     const updateAppData = update(appData, {
@@ -92,34 +92,34 @@ function Dashboard(props) {
     setAppData(updateAppData);
   }
 
-  React.useEffect(() => {
-		fetchRoomList();
-    fetchDeviceList();
+  useEffect(() => {
+    fetchSpaceList();
+    fetchSensorList();
   }, []);
 
-	const fetchRoomList = async () => {
+  const fetchSpaceList = async () => {
     try {
-      const res = await axios.get(`${REACT_APP_API_URL}/rooms`);
-      setRoomList(res.data);
+      const res = await axios.get(`${REACT_APP_API_URL}/spaces`);
+      setSpaceList(res.data);
     } catch (error) {
       console.log(error);
     }
   };
-  
-  const fetchDeviceList = async () => {
+
+  const fetchSensorList = async () => {
     try {
-      const res = await axios.get(`${REACT_APP_API_URL}/devices`);
-      setDeviceList(res.data);
+      const res = await axios.get(`${REACT_APP_API_URL}/sensors`);
+      setSensorList(res.data);
     } catch (error) {
       console.log(error);
     }
-	};
+  };
 
   const handleChangeBuildingName = event => {
     setBuildingName(event.target.value);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  
+
   return (
     <Grid container spacing={4}>
       <Grid item xs={12}>
@@ -146,15 +146,16 @@ function Dashboard(props) {
       </Grid>
       <Grid item md={6}>
         <Paper className={fixedHeightPaper}>
-          <RoomList
-            roomList={roomList}
+          <SpaceList
+            spaceList={spaceList}
           />
         </Paper>
       </Grid>
       <Grid item xs={12}>
         <Paper className={fixedHeightPaper}>
-          <DeviceList
-            deviceList={deviceList}
+          <SensorList
+            sensorList={sensorList}
+            spaceList={spaceList}
           />
         </Paper>
       </Grid>
@@ -164,7 +165,7 @@ function Dashboard(props) {
 }
 
 Dashboard.propTypes = {
-    props: PropTypes.object
+  props: PropTypes.object
 };
 
 
